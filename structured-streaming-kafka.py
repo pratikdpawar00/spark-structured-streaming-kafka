@@ -7,7 +7,7 @@ KAFKA_OUTPUT_TOPIC_NAME_CONS = "topic"
 KAFKA_BOOTSTRAP_SERVERS_CONS = 'localhost:9092'
 
 if __name__ == "__main__":
-    print("PySpark Structured Streaming with Kafka Demo Application Started ...")
+    print("PySpark Structured Streaming with Kafka Demo Application Started ")
 
     packages = [
         f'org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2',
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     transaction_detail_df3 = transaction_detail_df2.select("transaction_detail.*", "timestamp")
 
-    # Simple aggregate - find total_transaction_amount by grouping transaction_card_type
+    # aggregate - find total_transaction_amount by grouping transaction_card_type
     transaction_detail_df4 = transaction_detail_df3.groupBy("transaction_card_type")\
         .agg({'transaction_amount': 'sum'}).select("transaction_card_type", \
         col("sum(transaction_amount)").alias("total_transaction_amount"))
@@ -86,12 +86,10 @@ if __name__ == "__main__":
 
     trans_detail_write_stream.awaitTermination()
 
-    print("PySpark Structured Streaming with Kafka Demo Application Completed.")
-
 '''
-========================================================================
+========================================================================================================
 								OUTPUT
-========================================================================
+========================================================================================================
 /usr/bin/python3.8 /home/hadoop/PycharmProjects/structuredstreamingkafka/structured-streaming-kafka.py
 PySpark Structured Streaming with Kafka Demo Application Started ...
 :: loading settings :: url = jar:file:/home/hadoop/.local/lib/python3.8/site-packages/pyspark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
