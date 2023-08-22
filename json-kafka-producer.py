@@ -8,7 +8,7 @@ KAFKA_TOPIC_NAME_CONS = "test"
 KAFKA_BOOTSTRAP_SERVERS_CONS = 'localhost:9092'
 
 if __name__ == "__main__":
-    print("Kafka Producer Application Started ... ")
+    print("Kafka Producer Application Started ")
 
     kafka_producer_obj = KafkaProducer(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS_CONS,
                              value_serializer=lambda x: dumps(x).encode('utf-8'))
@@ -33,6 +33,9 @@ if __name__ == "__main__":
 
 
 '''
+===============================================================
+                OUTPUT
+===============================================================
 /usr/bin/python3.8 /home/hadoop/PycharmProjects/structuredstreamingkafka/json-kafka-producer.py
 Kafka Producer Application Started ... 
 Sending message to Kafka topic: 1
